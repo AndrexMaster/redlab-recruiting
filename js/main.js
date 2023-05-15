@@ -33,15 +33,7 @@ $(document).ready(() => {
     const btnFromTop = btnOrder[0].getBoundingClientRect().bottom
     const btnOrderText = $('#btn-order .btn-order__text-wrap');
     const halfWindowWidth = $(window).width() / 2
-    
-    const btnOrderLastPosition = {
-        x: 0,
-        y: 0
-    }
-    const btnOrderTextLastPosition = {
-        x: 0,
-        y: 0
-    }
+
     const elemCenter = (elem) => {
         let elemCenterTop = elem.height() / 2 + 1;
         let elemCenterLeft = elem.width() / 2 + 1;
@@ -53,42 +45,6 @@ $(document).ready(() => {
     };
 
 
-
-    // Running numbers Function
-    function animatedCounter (obj, start, end, duration, index) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) {
-                startTimestamp = timestamp;
-            }
-
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            $(obj).html(Math.floor(progress * (end - start) + start));
-
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    const transitionAnim = (moveFrom, moveTo) => {
-        moveFrom = Math.round(moveFrom)
-        moveTo = Math.round(moveTo)
-
-        const moveAxis = () => {
-
-            if (moveFrom === moveTo) {
-                return moveFrom
-            }else{
-                moveFrom += 1
-                window.requestAnimationFrame(moveAxis)
-            }
-        }
-
-        return window.requestAnimationFrame(moveAxis)
-    }
-
     btnOrder.on('mousemove', function (e) {
         const elemSensitivity = {
             btn: 0.5,
@@ -99,13 +55,10 @@ $(document).ready(() => {
             y: e.clientY,
         }
 
-        console.log( transitionAnim(btnOrderLastPosition.x, (mousePos.x - halfWindowWidth) * elemSensitivity.btn) )
-
-
         btnOrder.css({
             'transform' : 'translate(' +
-                + 'px,' +
-                + 'px)'
+                ( (mousePos.x - halfWindowWidth) * elemSensitivity.btn ) + 'px,' +
+                ( (mousePos.y - btnFromTop + elemCenter(btnOrder).top) * elemSensitivity.btn ) + 'px)'
         });
 
         btnOrderText.css({
@@ -113,12 +66,6 @@ $(document).ready(() => {
                 ( (mousePos.x - halfWindowWidth) * elemSensitivity.btnText ) + 'px,' +
                 ( (mousePos.y - btnFromTop + elemCenter(btnOrder).top) * elemSensitivity.btnText ) + 'px)'
         });
-
-        // Change Last positions
-
-        btnOrderLastPosition.x = (mousePos.x - halfWindowWidth) * elemSensitivity.btn
-        btnOrderLastPosition.y = (mousePos.y - btnFromTop + elemCenter(btnOrder).top) * elemSensitivity.btn
-
     });
 
     btnOrder.on('mouseenter', function (e) {
