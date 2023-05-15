@@ -29,67 +29,70 @@ $(document).scroll(() => {
 
 // Order Ball
 $(document).ready(() => {
-    const btnOrder = $('#btn-order');
-    const btnOrderText = $('#btn-order .btn-order__text-wrap');
+    if ( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && $(window).width() > 668 ) {
 
-    let btnFromTop = btnOrder[0].getBoundingClientRect().bottom
-    let halfWindowWidth = $(window).width() / 2
+        const btnOrder = $('#btn-order');
+        const btnOrderText = $('#btn-order .btn-order__text-wrap');
 
-    $( window ).on( 'resize', () => {
-        btnFromTop = btnOrder[0].getBoundingClientRect().bottom
-        halfWindowWidth = $(window).width() / 2
+        let btnFromTop = btnOrder[0].getBoundingClientRect().bottom
+        let halfWindowWidth = $(window).width() / 2
 
-    })
+        $(window).on('resize', () => {
+            btnFromTop = btnOrder[0].getBoundingClientRect().bottom
+            halfWindowWidth = $(window).width() / 2
 
-    const elemCenter = (elem) => {
-        let elemCenterTop = elem.height() / 2 + 1;
-        let elemCenterLeft = elem.width() / 2 + 1;
+        })
 
-        return {
-            top: elemCenterTop,
-            left: elemCenterLeft,
-        }
-    };
+        const elemCenter = (elem) => {
+            let elemCenterTop = elem.height() / 2 + 1;
+            let elemCenterLeft = elem.width() / 2 + 1;
+
+            return {
+                top: elemCenterTop,
+                left: elemCenterLeft,
+            }
+        };
 
 
-    btnOrder.on('mousemove', function (e) {
-        const elemSensitivity = {
-            btn: 0.5,
-            btnText: 0.2,
-        }
-        const mousePos = {
-            x: e.clientX,
-            y: e.clientY,
-        }
+        btnOrder.on('mousemove', function (e) {
+            const elemSensitivity = {
+                btn: 0.5,
+                btnText: 0.2,
+            }
+            const mousePos = {
+                x: e.clientX,
+                y: e.clientY,
+            }
 
-        btnOrder.css({
-            'transform' : 'translate(' +
-                ( (mousePos.x - halfWindowWidth) * elemSensitivity.btn ) + 'px,' +
-                ( (mousePos.y - btnFromTop + elemCenter(btnOrder).top) * elemSensitivity.btn ) + 'px)'
+            btnOrder.css({
+                'transform': 'translate(' +
+                    ((mousePos.x - halfWindowWidth) * elemSensitivity.btn) + 'px,' +
+                    ((mousePos.y - btnFromTop + elemCenter(btnOrder).top) * elemSensitivity.btn) + 'px)'
+            });
+
+            btnOrderText.css({
+                'transform': 'translate(' +
+                    ((mousePos.x - halfWindowWidth) * elemSensitivity.btnText) + 'px,' +
+                    ((mousePos.y - btnFromTop + elemCenter(btnOrder).top) * elemSensitivity.btnText) + 'px)'
+            });
         });
 
-        btnOrderText.css({
-            'transform' : 'translate(' +
-                ( (mousePos.x - halfWindowWidth) * elemSensitivity.btnText ) + 'px,' +
-                ( (mousePos.y - btnFromTop + elemCenter(btnOrder).top) * elemSensitivity.btnText ) + 'px)'
+        btnOrder.on('mouseenter', function (e) {
+            btnOrder.addClass('btn-order_active')
         });
-    });
 
-    btnOrder.on('mouseenter', function (e) {
-        btnOrder.addClass('btn-order_active')
-    });
+        btnOrder.on('mouseleave', function (e) {
+            btnOrder.removeClass('btn-order_active')
+            btnOrder.css({
+                'transform': 'translate(0, 0)',
+            })
+            btnOrderText.css({
+                'transform': 'translate(0, 0)',
+            })
+        });
 
-    btnOrder.on('mouseleave', function (e) {
-        btnOrder.removeClass('btn-order_active')
-        btnOrder.css({
-            'transform' : 'translate(0, 0)',
+        $(document).scroll(() => {
+            getCoords(btnOrder).top > $(window).height() ? btnOrder.addClass('btn-order_scrolled') : btnOrder.removeClass('btn-order_scrolled')
         })
-        btnOrderText.css({
-            'transform' : 'translate(0, 0)',
-        })
-    });
-
-    $(document).scroll(() => {
-        getCoords(btnOrder).top > $(window).height() ? btnOrder.addClass('btn-order_scrolled') : btnOrder.removeClass('btn-order_scrolled')
-    })
+    }
 });
