@@ -30,9 +30,16 @@ $(document).scroll(() => {
 // Order Ball
 $(document).ready(() => {
     const btnOrder = $('#btn-order');
-    const btnFromTop = btnOrder[0].getBoundingClientRect().bottom
     const btnOrderText = $('#btn-order .btn-order__text-wrap');
-    const halfWindowWidth = $(window).width() / 2
+
+    let btnFromTop = btnOrder[0].getBoundingClientRect().bottom
+    let halfWindowWidth = $(window).width() / 2
+
+    $( window ).on( 'resize', () => {
+        btnFromTop = btnOrder[0].getBoundingClientRect().bottom
+        halfWindowWidth = $(window).width() / 2
+
+    })
 
     const elemCenter = (elem) => {
         let elemCenterTop = elem.height() / 2 + 1;
