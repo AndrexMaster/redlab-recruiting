@@ -198,6 +198,7 @@ header {
     bottom: -4%;
     height: 176px;
     width: 176px;
+    margin: 0 0 0 -88px;
 }
 
 .btn-order_active {
@@ -212,11 +213,6 @@ header {
     z-index: 2;
     top: 50%;
     left: 50%;
-    margin: -14% 0 0 -27%;
-}
-
-.btn-order_scrolled .btn-order__text-wrap{
-    margin: -14% 0 0 -26%;
 }
 
 .btn-order__text {
@@ -228,6 +224,7 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     -webkit-animation:spin 12s linear infinite;
     -moz-animation:spin 12s linear infinite;
     animation:spin 12s linear infinite;
@@ -240,14 +237,14 @@ header {
 
 /* Animation */
 @-moz-keyframes spin {
-    100% { -moz-transform:rotate(360deg); }
+    100% { -moz-transform:translate(-50%, -50%) rotate(360deg); }
 }
 @-webkit-keyframes spin {
-    100% { -webkit-transform:rotate(360deg); }
+    100% { -webkit-transform:translate(-50%, -50%) rotate(360deg); }
 }
 @keyframes spin {
     100% {
-        -webkit-transform:rotate(360deg);
-        transform:rotate(360deg);
+        -webkit-transform:translate(-50%, -50%) rotate(360deg);
+        transform:translate(-50%, -50%) rotate(360deg);
     }
 }
