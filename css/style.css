@@ -1,0 +1,253 @@
+body {
+    font-family: TTTravels;
+    color: #404040;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #404040;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+
+/* Header */
+
+header {
+    display: flex;
+    width: 100vw;
+    max-width: 100%;
+    position: fixed;
+    background-color: transparent;
+    transition: 400ms;
+}
+
+.header_fixed{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.07);
+}
+
+.header__content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 36px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.2px;
+}
+
+/* Header - Logo | Switcher */
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.building-switcher {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 2px;
+    padding: 3px;
+    background-color: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 48px;
+}
+
+.building-switcher__item{
+    background-color: transparent;
+    padding: 8px 12px;
+    transition: 400ms;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 15px;
+    color: #636C81;
+    border-radius: 34px;
+}
+
+.building-switcher__item_active{
+    background-color: #5A30F0;
+    color: #ffffff;
+}
+
+
+/* Header - Menu */
+.header-menu__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 32px;
+}
+
+/* Header - Contact */
+.header-contact {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: nowrap;
+    font-weight: 600;
+}
+
+.header-contact__item:not(:first-child) {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-contact__item:not(:first-child)::before {
+    content: '';
+    display: flex;
+    height: 14px;
+    width: 2px;
+    background-color: #404040;
+}
+
+/* Header - Menu switcher */
+.header__part:last-child{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 22px;
+}
+
+.drop-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+}
+
+.drop-menu__item{
+    display: flex;
+    width: 20px;
+    border-bottom: 2px solid #404040;
+    border-radius: 8px;
+}
+
+
+/* Main Banner */
+
+.main-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.main-banner__preview{
+    width: 100%;
+}
+
+.main-banner__preview img {
+    width: 100%;
+}
+
+.main-banner__content {
+    width: 100%;
+    max-width: 400px;
+}
+
+.main-banner__heading > * {
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 84px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+.main-banner__title {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+
+/* Order Button */
+
+.btn-order {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    margin: 0 0 0 -96px;
+    z-index: 3;
+    transition: 400ms;
+    background: #5A30F0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 196px;
+    width: 196px;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.btn-order_scrolled {
+    bottom: -4%;
+    height: 176px;
+    width: 176px;
+}
+
+.btn-order_active {
+    transition: bottom .4s ease;
+    bottom: 0;
+}
+
+.btn-order__text-wrap {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin: -14% 0 0 -27%;
+}
+
+.btn-order_scrolled .btn-order__text-wrap{
+    margin: -14% 0 0 -26%;
+}
+
+.btn-order__text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.03em;
+    max-width: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-animation:spin 12s linear infinite;
+    -moz-animation:spin 12s linear infinite;
+    animation:spin 12s linear infinite;
+}
+
+.btn-order_scrolled .btn-order__text{
+    font-size: 16px;
+    line-height: 21px;
+}
+
+/* Animation */
+@-moz-keyframes spin {
+    100% { -moz-transform:rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform:rotate(360deg); }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg);
+    }
+}

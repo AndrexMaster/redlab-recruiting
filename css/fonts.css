@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'TTTravels';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("../fonts/TTTravels/TTTravels-Light.ttf") format("truetype"),
+    url("../fonts/TTTravels/TTTravels-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'TTTravels';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/TTTravels/TTTravels-Regular.ttf") format("truetype"),
+    url("../fonts/TTTravels/TTTravels-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'TTTravels';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url("../fonts/TTTravels/TTTravels-Medium.ttf") format("truetype"),
+    url("../fonts/TTTravels/TTTravels-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'TTTravels';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../fonts/TTTravels/TTTravels-DemiBold.ttf") format("truetype"),
+    url("../fonts/TTTravels/TTTravels-DemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'TTTravels';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/TTTravels/TTTravels-Bold.ttf") format("truetype"),
+    url("../fonts/TTTravels/TTTravels-Bold.ttf") format("truetype");
+}
